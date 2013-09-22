@@ -23,6 +23,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
 
+#define kkIsOnIOS7OrLater() ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0)
+
 @interface KKPasscodeViewController ()
 
 @property(nonatomic,assign) BOOL isSmallLandscape;
@@ -92,9 +94,12 @@
     }
 	
 	_enterPasscodeTableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
-#if 1 // required for iOS7
-    _enterPasscodeTableView.contentInset = UIEdgeInsetsMake(45, _enterPasscodeTableView.contentInset.left, _enterPasscodeTableView.contentInset.bottom, _enterPasscodeTableView.contentInset.right);
-#endif
+    if (kkIsOnIOS7OrLater())
+        _enterPasscodeTableView.contentInset = UIEdgeInsetsMake(45,
+                                                                _enterPasscodeTableView.contentInset.left,
+                                                                _enterPasscodeTableView.contentInset.bottom,
+                                                                _enterPasscodeTableView.contentInset.right);
+    
 	_enterPasscodeTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_enterPasscodeTableView.delegate = self;
 	_enterPasscodeTableView.dataSource = self;
@@ -103,9 +108,12 @@
 	[self.view addSubview:_enterPasscodeTableView];
 	
 	_setPasscodeTableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
-#if 1 // required for iOS7
-    _setPasscodeTableView.contentInset = UIEdgeInsetsMake(45, _setPasscodeTableView.contentInset.left, _setPasscodeTableView.contentInset.bottom, _setPasscodeTableView.contentInset.right);
-#endif
+    if (kkIsOnIOS7OrLater())
+        _setPasscodeTableView.contentInset = UIEdgeInsetsMake(45,
+                                                              _setPasscodeTableView.contentInset.left,
+                                                              _setPasscodeTableView.contentInset.bottom,
+                                                              _setPasscodeTableView.contentInset.right);
+
 	_setPasscodeTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_setPasscodeTableView.delegate = self;
 	_setPasscodeTableView.dataSource = self;
@@ -114,9 +122,11 @@
 	[self.view addSubview:_setPasscodeTableView];
 	
 	_confirmPasscodeTableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
-#if 1 // required for iOS7
-    _confirmPasscodeTableView.contentInset = UIEdgeInsetsMake(45+47, _confirmPasscodeTableView.contentInset.left, _confirmPasscodeTableView.contentInset.bottom, _confirmPasscodeTableView.contentInset.right);
-#endif
+    if (kkIsOnIOS7OrLater())
+        _confirmPasscodeTableView.contentInset = UIEdgeInsetsMake(45+47,
+                                                                  _confirmPasscodeTableView.contentInset.left,
+                                                                  _confirmPasscodeTableView.contentInset.bottom,
+                                                                  _confirmPasscodeTableView.contentInset.right);
 	_confirmPasscodeTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_confirmPasscodeTableView.delegate = self;
 	_confirmPasscodeTableView.dataSource = self;
@@ -238,9 +248,11 @@
                                      tableView.frame.origin.y,
                                      tableView.frame.size.width,
                                      tableView.frame.size.height);
-#if 1 // required for iOS7
-        tableView.contentInset = UIEdgeInsetsMake(45+47, tableView.contentInset.left, tableView.contentInset.bottom, tableView.contentInset.right);
-#endif
+        if (kkIsOnIOS7OrLater())
+            tableView.contentInset = UIEdgeInsetsMake(45+47,
+                                                      tableView.contentInset.left,
+                                                      tableView.contentInset.bottom,
+                                                      tableView.contentInset.right);
 		[self.view addSubview:tableView];
 	}
 	
