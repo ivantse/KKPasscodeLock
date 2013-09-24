@@ -24,6 +24,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 #define kkIsOnIOS7OrLater() ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0)
+#define kkIOS7TableTopInset self.navigationController.navigationBar.frame.size.height
 
 @interface KKPasscodeViewController ()
 
@@ -95,7 +96,7 @@
 	
 	_enterPasscodeTableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
     if (kkIsOnIOS7OrLater())
-        _enterPasscodeTableView.contentInset = UIEdgeInsetsMake(45,
+        _enterPasscodeTableView.contentInset = UIEdgeInsetsMake(kkIOS7TableTopInset,
                                                                 _enterPasscodeTableView.contentInset.left,
                                                                 _enterPasscodeTableView.contentInset.bottom,
                                                                 _enterPasscodeTableView.contentInset.right);
@@ -109,7 +110,7 @@
 	
 	_setPasscodeTableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
     if (kkIsOnIOS7OrLater())
-        _setPasscodeTableView.contentInset = UIEdgeInsetsMake(45,
+        _setPasscodeTableView.contentInset = UIEdgeInsetsMake(kkIOS7TableTopInset,
                                                               _setPasscodeTableView.contentInset.left,
                                                               _setPasscodeTableView.contentInset.bottom,
                                                               _setPasscodeTableView.contentInset.right);
@@ -123,7 +124,7 @@
 	
 	_confirmPasscodeTableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
     if (kkIsOnIOS7OrLater())
-        _confirmPasscodeTableView.contentInset = UIEdgeInsetsMake(45+47,
+        _confirmPasscodeTableView.contentInset = UIEdgeInsetsMake(kkIOS7TableTopInset,
                                                                   _confirmPasscodeTableView.contentInset.left,
                                                                   _confirmPasscodeTableView.contentInset.bottom,
                                                                   _confirmPasscodeTableView.contentInset.right);
@@ -249,7 +250,7 @@
                                      tableView.frame.size.width,
                                      tableView.frame.size.height);
         if (kkIsOnIOS7OrLater())
-            tableView.contentInset = UIEdgeInsetsMake(45+47,
+            tableView.contentInset = UIEdgeInsetsMake(kkIOS7TableTopInset,
                                                       tableView.contentInset.left,
                                                       tableView.contentInset.bottom,
                                                       tableView.contentInset.right);
